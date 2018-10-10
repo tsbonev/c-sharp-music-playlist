@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SongPlaylistLib
+namespace SongPlaylistLib.Core
 {
-    public class Class1
+    enum Genre
     {
+        ROCK, POP, FOLK
     }
 }
