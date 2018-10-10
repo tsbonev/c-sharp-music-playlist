@@ -10,7 +10,7 @@ namespace SongPlaylistLib.Helpers
     /// A wrapper class that provides a null safe way to return an empty object.
     /// </summary>
     /// <typeparam name="T">The type to wrap.</typeparam>
-    class Optional<T>
+    public class Optional<T>
     {
         private Optional(){}
 
@@ -24,7 +24,7 @@ namespace SongPlaylistLib.Helpers
         /// </summary>
         /// <param name="obj">The value to wrap.</param>
         /// <returns>An Optional class of the value.</returns>
-        private static Optional<T> Of(T obj)
+        public static Optional<T> Of(T obj)
         {
             return new Optional<T>(obj);
         }
@@ -33,7 +33,7 @@ namespace SongPlaylistLib.Helpers
         /// Creates an Optional class that wraps null.
         /// </summary>
         /// <returns>An Optional class with a null value.</returns>
-        private static Optional<T> Empty()
+        public static Optional<T> Empty()
         {
             return new Optional<T>();
         }
@@ -44,7 +44,7 @@ namespace SongPlaylistLib.Helpers
         /// Returns the value of the wrapper.
         /// </summary>
         /// <returns>An object of type T.</returns>
-        T Get()
+        public T Get()
         {
             return RawValue;
         }
@@ -53,7 +53,7 @@ namespace SongPlaylistLib.Helpers
         /// Returns true when the wrapper has a value.
         /// </summary>
         /// <returns>Whether the wrapper has a value.</returns>
-        bool IsPresent()
+        public bool IsPresent()
         {
             return RawValue != null;
         }

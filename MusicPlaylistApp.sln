@@ -5,10 +5,7 @@ VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SongPlaylistLib", "SongPlaylistLib\SongPlaylistLib.csproj", "{56909841-404F-4BF2-BCAE-C8374CE4EF01}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E7A5AEC2-1388-4764-A032-D49DF1D5A0E4}"
-	ProjectSection(SolutionItems) = preProject
-		MusicPlaylistRequirements.txt = MusicPlaylistRequirements.txt
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SongPlaylistTest", "SongPlaylistTest\SongPlaylistTest.csproj", "{DE69BCBF-6938-4BDC-A087-F50D757B842C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +17,10 @@ Global
 		{56909841-404F-4BF2-BCAE-C8374CE4EF01}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56909841-404F-4BF2-BCAE-C8374CE4EF01}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56909841-404F-4BF2-BCAE-C8374CE4EF01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE69BCBF-6938-4BDC-A087-F50D757B842C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE69BCBF-6938-4BDC-A087-F50D757B842C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE69BCBF-6938-4BDC-A087-F50D757B842C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE69BCBF-6938-4BDC-A087-F50D757B842C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

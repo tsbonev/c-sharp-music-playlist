@@ -1,0 +1,6 @@
+C:\Users\s703\source\repos\MusicPlaylistApp\SongPlaylistLib\bin\Debug\SongPlaylistLib.dll
+C:\Users\s703\source\repos\MusicPlaylistApp\SongPlaylistLib\bin\Debug\SongPlaylistLib.pdb
+C:\Users\s703\source\repos\MusicPlaylistApp\SongPlaylistLib\obj\Debug\SongPlaylistLib.csprojResolveAssemblyReference.cache
+C:\Users\s703\source\repos\MusicPlaylistApp\SongPlaylistLib\obj\Debug\SongPlaylistLib.csproj.CoreCompileInputs.cache
+C:\Users\s703\source\repos\MusicPlaylistApp\SongPlaylistLib\obj\Debug\SongPlaylistLib.dll
+C:\Users\s703\source\repos\MusicPlaylistApp\SongPlaylistLib\obj\Debug\SongPlaylistLib.pdb
