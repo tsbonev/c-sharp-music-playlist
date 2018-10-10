@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace SongPlaylistLib.Core
 {
-    public enum Genre
+    public class SongAlreadyExistsException : Exception
     {
-        ROCK, POP, FOLK
+        public SongAlreadyExistsException()
+        {
+        }
     }
 }

@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace SongPlaylistLib.Core
 {
-    class SongRequest
+    public class SongRequest
     {
+        public SongRequest(string artist, List<Genre> genres)
+        {
+            this.Artist = artist;
+            this.Genres = genres;
+        }
+
         public string Artist { get; set; }
         public List<Genre> Genres { get; set; }
     }

@@ -10,14 +10,14 @@ namespace SongPlaylistLib.Core
     /// <summary>
     /// Provides the methods to store, update and query songs.
     /// </summary>
-    interface IMusicPlaylist
+    public interface IMusicPlaylist
     {
         /// <summary>
         /// Adds a song to the playlist.
         /// </summary>
         /// <param name="songRequest">The song request describing the song to add.</param>
-        /// <returns>The added song.</returns>
-        Song Add(SongRequest songRequest);
+        /// <returns>The id of the added song.</returns>
+        string Add(SongRequest songRequest);
 
         /// <summary>
         /// Updates a song.

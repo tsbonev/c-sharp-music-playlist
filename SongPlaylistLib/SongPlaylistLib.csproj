@@ -42,7 +42,9 @@
   <ItemGroup>
     <Compile Include="Core\Genre.cs" />
     <Compile Include="Core\IMusicPlaylist.cs" />
+    <Compile Include="Core\InMemoryMusicPlaylist.cs" />
     <Compile Include="Core\Song.cs" />
+    <Compile Include="Core\SongAlreadyExistsException.cs" />
     <Compile Include="Core\SongRequest.cs" />
     <Compile Include="Helpers\Optional.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
