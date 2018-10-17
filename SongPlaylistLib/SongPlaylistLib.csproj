@@ -46,7 +46,6 @@
     <Compile Include="Core\Song.cs" />
     <Compile Include="Core\SongAlreadyExistsException.cs" />
     <Compile Include="Core\SongRequest.cs" />
-    <Compile Include="Helpers\Optional.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

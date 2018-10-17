@@ -20,9 +20,9 @@ namespace SongPlaylistTest.Core
 
             var savedSong = musicPlaylist.GetById(savedSongId);
 
-            Assert.AreEqual(savedSong.IsPresent(), true);
-            Assert.AreEqual(savedSong.Get().Artist, "::artist::");
-            Assert.IsTrue(savedSong.Get().Genres.SequenceEqual(new List<Genre>() {Genre.POP}));
+            Assert.AreEqual(savedSong.HasValue, true);
+            Assert.AreEqual(savedSong.Value.Artist, "::artist::");
+            Assert.IsTrue(savedSong.Value.Genres.SequenceEqual(new List<Genre>() {Genre.POP}));
         }
 
         [TestMethod]
@@ -38,7 +38,7 @@ namespace SongPlaylistTest.Core
         {
             var savedSongId = musicPlaylist.Add(songRequest);
             var possibleSong= musicPlaylist.GetById(savedSongId);
-            var retrievedSong = possibleSong.Get();
+            var retrievedSong = possibleSong.Value;
 
             retrievedSong.Artist = "::new-artist::";
 
@@ -55,7 +55,7 @@ namespace SongPlaylistTest.Core
 
             var allSongs = musicPlaylist.GetAll();
 
-            Assert.IsTrue(allSongs.SequenceEqual(new List<Song>(){possibleSong.Get()}));
+            Assert.IsTrue(allSongs.SequenceEqual(new List<Song>(){possibleSong.Value }));
         }
 
         [TestMethod]
@@ -64,9 +64,9 @@ namespace SongPlaylistTest.Core
             var savedSongId = musicPlaylist.Add(songRequest);
             var possibleSong = musicPlaylist.GetById(savedSongId);
 
-            var songList = musicPlaylist.GetByArtist(possibleSong.Get().Artist);
+            var songList = musicPlaylist.GetByArtist(possibleSong.Value.Artist);
 
-            Assert.IsTrue(songList.SequenceEqual(new List<Song>() { possibleSong.Get() }));
+            Assert.IsTrue(songList.SequenceEqual(new List<Song>() { possibleSong.Value }));
         }
 
         [TestMethod]
@@ -81,7 +81,7 @@ namespace SongPlaylistTest.Core
 
             var songList = musicPlaylist.GetByGenre(Genre.POP);
 
-            var expectedList = new List<Song>() {possibleSecondPopSong.Get(), possibleSong.Get()};
+            var expectedList = new List<Song>() {possibleSecondPopSong.Value, possibleSong.Value };
 
             Assert.IsTrue(songList.Contains(expectedList[0]));
             Assert.IsTrue(songList.Contains(expectedList[1]));

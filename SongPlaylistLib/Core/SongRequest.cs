@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SongPlaylistLib.Core
 {
-    public class SongRequest
+    public struct SongRequest
     {
         public SongRequest(string artist, List<Genre> genres)
         {

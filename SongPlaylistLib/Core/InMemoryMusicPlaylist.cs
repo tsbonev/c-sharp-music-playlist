@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SongPlaylistLib.Helpers;
 
 namespace SongPlaylistLib.Core
 {
@@ -38,11 +37,11 @@ namespace SongPlaylistLib.Core
             return Songs.Values.ToList();
         }
 
-        public Optional<Song> GetById(string songId)
+        public Song? GetById(string songId)
         {
             var possibleSong = Songs[songId];
 
-            return possibleSong == null ? Optional<Song>.Empty() : Optional<Song>.Of(possibleSong);
+            return possibleSong;
         }
 
         public List<Song> GetByGenre(Genre genre)

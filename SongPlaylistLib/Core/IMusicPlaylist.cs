@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SongPlaylistLib.Helpers;
 
 namespace SongPlaylistLib.Core
 {
@@ -36,8 +35,8 @@ namespace SongPlaylistLib.Core
         /// Returns a song by id.
         /// </summary>
         /// <param name="songId">The id of the song sought.</param>
-        /// <returns>An optional song.</returns>
-        Optional<Song> GetById(string songId);
+        /// <returns>A nullable song.</returns>
+        Song? GetById(string songId);
         
         /// <summary>
         /// Returns a list of songs by genre.
