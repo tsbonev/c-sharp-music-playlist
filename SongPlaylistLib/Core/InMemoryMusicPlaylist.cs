@@ -9,12 +9,12 @@ namespace SongPlaylistLib.Core
 {
     public class InMemoryMusicPlaylist : IMusicPlaylist
     {
+        private Dictionary<string, Song> Songs { get; set; }
+
         public InMemoryMusicPlaylist()
         {
             Songs = new Dictionary<string, Song>();
         }
-
-        private Dictionary<string, Song> Songs { get; set; }
 
         public string Add(SongRequest songRequest)
         {

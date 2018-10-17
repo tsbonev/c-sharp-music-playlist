@@ -10,8 +10,8 @@ namespace SongPlaylistLib.Core
     {
         public SongRequest(string artist, List<Genre> genres)
         {
-            this.Artist = artist;
-            this.Genres = genres;
+            Artist = artist;
+            Genres = genres;
         }
 
         public string Artist { get; set; }

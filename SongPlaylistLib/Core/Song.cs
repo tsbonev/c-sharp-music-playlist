@@ -10,9 +10,9 @@ namespace SongPlaylistLib.Core
     {
         public Song(string artist, List<Genre> genres)
         {
-            this.Id = System.Guid.NewGuid().ToString();
-            this.Artist = artist;
-            this.Genres = genres;
+            Id = Guid.NewGuid().ToString();
+            Artist = artist;
+            Genres = genres;
         }
 
         public string Id { get; }
