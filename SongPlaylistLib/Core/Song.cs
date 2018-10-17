@@ -17,6 +17,6 @@ namespace SongPlaylistLib.Core
 
         public string Id { get; }
         public string Artist { get; set; }
-        public List<Genre> Genres { get; set; }
+        public List<Genre> Genres { get; set;  }
     }
 }

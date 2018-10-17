@@ -39,9 +39,16 @@ namespace SongPlaylistLib.Core
 
         public Song? GetById(string songId)
         {
-            var possibleSong = Songs[songId];
+            if (songId == null) return null;
 
-            return possibleSong;
+            try
+            {
+                return Songs[songId];
+            }
+            catch(KeyNotFoundException e)
+            {
+                return null;
+            }
         }
 
         public List<Song> GetByGenre(Genre genre)

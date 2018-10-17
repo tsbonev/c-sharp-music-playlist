@@ -12,3 +12,9 @@
 	4. Return a list of songs by genre.
 	5. Return a list of all songs.
 	6. Update a song.
+
+- Extended requirements
+	- Retrieving songs
+		1. When retrieving with an non-existent or incorrect id, should return null.
+	- Updating songs
+		1. When updating a non-existent song, that song should be inserted instead.

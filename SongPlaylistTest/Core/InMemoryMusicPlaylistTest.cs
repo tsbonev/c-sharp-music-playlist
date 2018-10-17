@@ -9,9 +9,9 @@ namespace SongPlaylistTest.Core
     [TestClass]
     public class InMemoryMusicPlaylistTest
     {
-        private readonly IMusicPlaylist musicPlaylist = new InMemoryMusicPlaylist(); 
+        private readonly IMusicPlaylist musicPlaylist = new InMemoryMusicPlaylist();
         private readonly SongRequest songRequest = new SongRequest("::artist::", new List<Genre>() { Genre.POP });
-        
+
 
         [TestMethod]
         public void AddAndRetrieveSong()
@@ -22,7 +22,23 @@ namespace SongPlaylistTest.Core
 
             Assert.AreEqual(savedSong.HasValue, true);
             Assert.AreEqual(savedSong.Value.Artist, "::artist::");
-            Assert.IsTrue(savedSong.Value.Genres.SequenceEqual(new List<Genre>() {Genre.POP}));
+            Assert.IsTrue(savedSong.Value.Genres.SequenceEqual(new List<Genre>() { Genre.POP }));
+        }
+
+        [TestMethod]
+        public void RetrievingNonExistingSongReturnsNull()
+        {
+            var nullSong = musicPlaylist.GetById("::non-existent-id::");
+
+            Assert.AreEqual(nullSong.HasValue, false);
+        }
+
+        [TestMethod]
+        public void RetrievingSongWithNullForIdReturnsNull()
+        {
+            var nullSong = musicPlaylist.GetById(null);
+
+            Assert.AreEqual(nullSong.HasValue, false);
         }
 
         [TestMethod]
@@ -45,6 +61,17 @@ namespace SongPlaylistTest.Core
             var updatedSong = musicPlaylist.Update(retrievedSong);
 
             Assert.AreEqual(retrievedSong, updatedSong);
+        }
+
+        [TestMethod]
+        public void UpdatingNonExistentSongUpserts()
+        {
+            var song = new Song("::artist::", new List<Genre> { Genre.POP });
+
+            var upsertedSong = musicPlaylist.Update(song);
+
+            Assert.AreEqual(song.Artist, upsertedSong.Artist);
+            Assert.IsTrue(song.Genres.SequenceEqual(upsertedSong.Genres));
         }
 
         [TestMethod]
