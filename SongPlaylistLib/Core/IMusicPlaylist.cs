@@ -15,6 +15,8 @@ namespace SongPlaylistLib.Core
         /// Adds a song to the playlist.
         /// </summary>
         /// <param name="songRequest">The song request describing the song to add.</param>
+        /// <exception cref="SongPlaylistLib.Core.SongAlreadyExistsException">Thrown when the song
+        /// that is being added already exists.</exception>
         /// <returns>The id of the added song.</returns>
         string Add(SongRequest songRequest);
 
