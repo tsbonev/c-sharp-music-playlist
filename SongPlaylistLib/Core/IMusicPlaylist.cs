@@ -45,7 +45,7 @@ namespace SongPlaylistLib.Core
         /// </summary>
         /// <param name="genre">The genre to search by.</param>
         /// <returns>A list of song that are of the specified genre.</returns>
-        List<Song> GetByGenre(Genre genre);
+        List<Song> GetByGenre(string genre);
 
         /// <summary>
         /// Returns a list of songs by artist.

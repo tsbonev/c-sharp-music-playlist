@@ -8,7 +8,7 @@ namespace SongPlaylistLib.Core
 {
     public struct Song
     {
-        public Song(string artist, List<Genre> genres)
+        public Song(string artist, List<string> genres)
         {
             Id = Guid.NewGuid().ToString();
             Artist = artist;
@@ -17,6 +17,6 @@ namespace SongPlaylistLib.Core
 
         public string Id { get; }
         public string Artist { get; set; }
-        public List<Genre> Genres { get; set;  }
+        public List<string> Genres { get; set;  }
     }
 }

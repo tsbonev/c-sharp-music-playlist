@@ -8,13 +8,13 @@ namespace SongPlaylistLib.Core
 {
     public struct SongRequest
     {
-        public SongRequest(string artist, List<Genre> genres)
+        public SongRequest(string artist, List<string> genres)
         {
             Artist = artist;
-            Genres = genres;
+            Genres = genres.ConvertAll(s => s.ToLower());
         }
 
         public string Artist { get; }
-        public List<Genre> Genres { get; }
+        public List<string> Genres { get; }
     }
 }

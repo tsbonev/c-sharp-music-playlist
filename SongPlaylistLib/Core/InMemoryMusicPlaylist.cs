@@ -10,9 +10,12 @@ namespace SongPlaylistLib.Core
     {
         private Dictionary<string, Song> Songs { get; set; }
 
+        public List<string> Genres { get; set; }
+
         public InMemoryMusicPlaylist()
         {
             Songs = new Dictionary<string, Song>();
+            Genres = new List<string>();
         }
 
         public string Add(SongRequest songRequest)
@@ -21,6 +24,8 @@ namespace SongPlaylistLib.Core
 
             if (SongExists(song)) throw new SongAlreadyExistsException();
 
+            songRequest.Genres.ForEach(genre => AddGenre(genre));
+
             Songs.Add(song.Id, song);
 
             return song.Id;
@@ -28,6 +33,7 @@ namespace SongPlaylistLib.Core
 
         public Song Update(Song song)
         {
+            song.Genres.ForEach(genre => AddGenre(genre));
             Songs[song.Id] = song;
             return song;
         }
@@ -51,14 +57,19 @@ namespace SongPlaylistLib.Core
             }
         }
 
-        public List<Song> GetByGenre(Genre genre)
+        public List<Song> GetByGenre(string genre)
         {
-            return Songs.Values.Where(s => s.Genres.Contains(genre)).ToList();
+            return Songs.Values.Where(s => s.Genres.Contains(genre.ToLower())).ToList();
         }
 
         public List<Song> GetByArtist(string artist)
         {
             return Songs.Values.Where(s => s.Artist == artist).ToList();
+        }
+
+        private void AddGenre(string genre)
+        {
+            if (!Genres.Contains(genre.ToLower())) Genres.Add(genre.ToLower());
         }
 
         private bool SongExists(Song song)

@@ -10,7 +10,7 @@ namespace SongPlaylistTest.Core
     public class InMemoryMusicPlaylistTest
     {
         private readonly IMusicPlaylist musicPlaylist = new InMemoryMusicPlaylist();
-        private readonly SongRequest songRequest = new SongRequest("::artist::", new List<Genre>() { Genre.POP });
+        private readonly SongRequest songRequest = new SongRequest("::artist::", new List<string>() { "POP" });
 
 
         [TestMethod]
@@ -22,7 +22,7 @@ namespace SongPlaylistTest.Core
 
             Assert.AreEqual(savedSong.HasValue, true);
             Assert.AreEqual(savedSong.Value.Artist, "::artist::");
-            Assert.IsTrue(savedSong.Value.Genres.SequenceEqual(new List<Genre>() { Genre.POP }));
+            Assert.IsTrue(savedSong.Value.Genres.SequenceEqual(new List<string>() { "pop" }));
         }
 
         [TestMethod]
@@ -53,7 +53,7 @@ namespace SongPlaylistTest.Core
         public void UpdateSong()
         {
             var savedSongId = musicPlaylist.Add(songRequest);
-            var possibleSong= musicPlaylist.GetById(savedSongId);
+            var possibleSong = musicPlaylist.GetById(savedSongId);
             var retrievedSong = possibleSong.Value;
 
             retrievedSong.Artist = "::new-artist::";
@@ -66,7 +66,7 @@ namespace SongPlaylistTest.Core
         [TestMethod]
         public void UpdatingNonExistentSongUpserts()
         {
-            var song = new Song("::artist::", new List<Genre> { Genre.POP });
+            var song = new Song("::artist::", new List<string> { "POP" });
 
             var upsertedSong = musicPlaylist.Update(song);
 
@@ -82,7 +82,7 @@ namespace SongPlaylistTest.Core
 
             var allSongs = musicPlaylist.GetAll();
 
-            Assert.IsTrue(allSongs.SequenceEqual(new List<Song>(){possibleSong.Value }));
+            Assert.IsTrue(allSongs.SequenceEqual(new List<Song>() { possibleSong.Value }));
         }
 
         [TestMethod]
@@ -100,18 +100,29 @@ namespace SongPlaylistTest.Core
         public void GetSongsByGenre()
         {
             var secondPopSongId =
-                musicPlaylist.Add(new SongRequest("::new-artist::", new List<Genre>() {Genre.POP, Genre.ROCK}));
+                musicPlaylist.Add(new SongRequest("::new-artist::", new List<string>() { "POP", "ROCK" }));
             var possibleSecondPopSong = musicPlaylist.GetById(secondPopSongId);
 
             var savedSongId = musicPlaylist.Add(songRequest);
             var possibleSong = musicPlaylist.GetById(savedSongId);
 
-            var songList = musicPlaylist.GetByGenre(Genre.POP);
+            var songList = musicPlaylist.GetByGenre("pop");
 
-            var expectedList = new List<Song>() {possibleSecondPopSong.Value, possibleSong.Value };
+            var expectedList = new List<Song>() { possibleSecondPopSong.Value, possibleSong.Value };
 
             Assert.IsTrue(songList.Contains(expectedList[0]));
             Assert.IsTrue(songList.Contains(expectedList[1]));
+        }
+
+        [TestMethod]
+        public void GenresAreCaseInsensitive()
+        {
+            var lowercaseList = musicPlaylist.GetByGenre("pop");
+            var randomcaseList = musicPlaylist.GetByGenre("pOp");
+            var uppercaseList = musicPlaylist.GetByGenre("POP");
+
+            Assert.IsTrue(lowercaseList.SequenceEqual(randomcaseList));
+            Assert.IsTrue(lowercaseList.SequenceEqual(uppercaseList));
         }
     }
 }

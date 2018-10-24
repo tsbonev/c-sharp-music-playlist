@@ -12,6 +12,7 @@
 	4. Return a list of songs by genre.
 	5. Return a list of all songs.
 	6. Update a song.
+	7. Add new genres.
 
 - Detailed Requirements
 	
@@ -38,3 +39,9 @@
 	3.1.1. Updating a song replaces it in memory.
 	3.1.2. If an update request contains a Song object that does not match any other in memory
 	then the song is inserted instead.
+
+	4. Storing Genres.
+	4.1. Genres should be stored in a mutable list to allow the adding of new ones.
+	4.2. Adding a song with a Genre not in the list should add that Genre to the list.
+	4.2.1. Updating a song with new Genres should also store them into the list.
+	4.3. Genres are not case sensitive so "Pop" and "pop" should be considered the same by the list.
