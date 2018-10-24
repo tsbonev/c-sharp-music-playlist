@@ -124,5 +124,33 @@ namespace SongPlaylistTest.Core
             Assert.IsTrue(lowercaseList.SequenceEqual(randomcaseList));
             Assert.IsTrue(lowercaseList.SequenceEqual(uppercaseList));
         }
+
+        [TestMethod]
+        public void AddingSongAddsItGenreToList()
+        {
+            var savedSongId = musicPlaylist.Add(songRequest);
+
+            var genres = musicPlaylist.ViewGenres();
+
+            Assert.IsTrue(genres.SequenceEqual(songRequest.Genres.ConvertAll(s => s.ToLower())));
+        }
+
+        [TestMethod]
+        public void UpdatingSongAddsItGenreToList()
+        {
+            var savedSongId = musicPlaylist.Add(songRequest);
+
+            var updatedSong = musicPlaylist.Update(new Song(savedSongId, "::artist::", new List<string> { "Country", "pop" }));
+
+            var genres = musicPlaylist.ViewGenres();
+
+            genres.Sort();
+
+            var expectedGenres = new List<string> { "pop", "country" };
+
+            expectedGenres.Sort();
+
+            Assert.IsTrue(genres.SequenceEqual(expectedGenres));
+        }
     }
 }

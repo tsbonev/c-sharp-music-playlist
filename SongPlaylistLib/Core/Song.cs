@@ -12,7 +12,14 @@ namespace SongPlaylistLib.Core
         {
             Id = Guid.NewGuid().ToString();
             Artist = artist;
-            Genres = genres;
+            Genres = genres ?? throw new ArgumentNullException("Genres cannot be null!");
+        }
+
+        public Song(string id, string artist, List<string> genres)
+        {
+            Id = id;
+            Artist = artist;
+            Genres = genres ?? throw new ArgumentNullException("Genres cannot be null!");
         }
 
         public string Id { get; }

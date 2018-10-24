@@ -67,6 +67,11 @@ namespace SongPlaylistLib.Core
             return Songs.Values.Where(s => s.Artist == artist).ToList();
         }
 
+        public List<string> ViewGenres()
+        {
+            return Genres;
+        }
+
         private void AddGenre(string genre)
         {
             if (!Genres.Contains(genre.ToLower())) Genres.Add(genre.ToLower());

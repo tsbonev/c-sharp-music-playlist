@@ -13,6 +13,7 @@
 	5. Return a list of all songs.
 	6. Update a song.
 	7. Add new genres.
+	8. View genres.
 
 - Detailed Requirements
 	
@@ -45,3 +46,4 @@
 	4.2. Adding a song with a Genre not in the list should add that Genre to the list.
 	4.2.1. Updating a song with new Genres should also store them into the list.
 	4.3. Genres are not case sensitive so "Pop" and "pop" should be considered the same by the list.
+	4.4. The genre list should be available for viewing.

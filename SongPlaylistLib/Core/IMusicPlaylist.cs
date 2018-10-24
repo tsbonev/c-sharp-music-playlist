@@ -53,5 +53,11 @@ namespace SongPlaylistLib.Core
         /// <param name="Artist">The name of the artist.</param>
         /// <returns>A list of songs whose artist is the one specified.</returns>
         List<Song> GetByArtist(string Artist);
+
+        /// <summary>
+        /// Returns the list of stored genres.
+        /// </summary>
+        /// <returns>A list of all stored genres.</returns>
+        List<string> ViewGenres();
     }
 }
