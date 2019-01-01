@@ -140,7 +140,7 @@ namespace SongPlaylistTest.Core
         {
             var savedSongId = musicPlaylist.Add(songRequest);
 
-            var updatedSong = musicPlaylist.Update(new Song(savedSongId, "::artist::", new List<string> { "Country", "pop" }));
+            musicPlaylist.Update(new Song(savedSongId, "::artist::", new List<string> { "Country", "pop" }));
 
             var genres = musicPlaylist.ViewGenres();
 
