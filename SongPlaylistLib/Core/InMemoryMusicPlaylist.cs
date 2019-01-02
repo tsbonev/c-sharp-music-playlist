@@ -18,24 +18,48 @@ namespace SongPlaylistLib.Core
             Genres = new List<string>();
         }
 
-        public string Add(SongRequest songRequest)
+        public string Add(RegisterSongRequest registerSongRequest)
         {
-            var song = new Song(songRequest.Artist, songRequest.Genres);
+            var song = new Song(registerSongRequest.Artist, registerSongRequest.Title, registerSongRequest.Genres);
 
             if (SongExists(song)) throw new SongAlreadyExistsException();
 
-            songRequest.Genres.ForEach(genre => AddGenre(genre));
+            registerSongRequest.Genres.ForEach(genre => AddGenre(genre));
 
             Songs.Add(song.Id, song);
 
             return song.Id;
         }
 
-        public Song Update(Song song)
+        public Song Update(string id, UpdateSongRequest request)
         {
-            song.Genres.ForEach(genre => AddGenre(genre));
-            Songs[song.Id] = song;
-            return song;
+            try
+            {
+                var songToUpdate = Songs[id];
+
+                request.Genres.ForEach(genre => AddGenre(genre));
+                var updatedSong = new Song(id, request.Artist, request.Title, request.Genres);
+                Songs[id] = updatedSong;
+                return updatedSong;
+            }
+            catch (KeyNotFoundException e)
+            {
+                throw new SongNotFoundException();
+            }
+        }
+
+        public Song Delete(string id)
+        {
+            try
+            {
+                var songToDelete = Songs[id];
+                Songs.Remove(id);
+                return songToDelete;
+            }
+            catch (KeyNotFoundException e)
+            {
+                throw new SongNotFoundException();
+            }
         }
 
         public List<Song> GetAll()
@@ -82,6 +106,7 @@ namespace SongPlaylistLib.Core
             foreach (var songsValue in Songs.Values)
             {
                 if (songsValue.Artist == song.Artist
+                    && songsValue.Title == song.Title
                     && songsValue.Genres.SequenceEqual(song.Genres))
                     return true;
             }

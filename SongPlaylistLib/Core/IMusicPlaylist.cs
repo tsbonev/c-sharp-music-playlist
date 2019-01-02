@@ -14,18 +14,28 @@ namespace SongPlaylistLib.Core
         /// <summary>
         /// Adds a song to the playlist.
         /// </summary>
-        /// <param name="songRequest">The song request describing the song to add.</param>
+        /// <param name="registerSongRequest">The song request describing the song to add.</param>
         /// <exception cref="SongPlaylistLib.Core.SongAlreadyExistsException">Thrown when the song
         /// that is being added already exists.</exception>
         /// <returns>The id of the added song.</returns>
-        string Add(SongRequest songRequest);
+        string Add(RegisterSongRequest registerSongRequest);
 
         /// <summary>
         /// Updates a song.
         /// </summary>
-        /// <param name="song">The song to update.</param>
+        /// <param name="id">The id of the song to update.</param>
+        /// <param name="request">The requested song update.</param>
+        /// <exception cref="SongNotFoundException">Thrown when a song by the passed id is not found.</exception>
         /// <returns>The updated song.</returns>
-        Song Update(Song song);
+        Song Update(string id, UpdateSongRequest request);
+
+        /// <summary>
+        /// Deletes a song by id.
+        /// </summary>
+        /// <param name="id">The id of the song to delete.</param>
+        /// <exception cref="SongPlaylistLib.Core.SongNotFoundException">Thrown when the song is not found.</exception>
+        /// <returns></returns>
+        Song Delete(string id);
 
         /// <summary>
         /// Returns all songs stored.

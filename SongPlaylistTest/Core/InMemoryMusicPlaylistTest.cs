@@ -10,18 +10,19 @@ namespace SongPlaylistTest.Core
     public class InMemoryMusicPlaylistTest
     {
         private readonly IMusicPlaylist musicPlaylist = new InMemoryMusicPlaylist();
-        private readonly SongRequest songRequest = new SongRequest("::artist::", new List<string>() { "POP" });
-
+        private readonly RegisterSongRequest _registerSongRequest = new RegisterSongRequest("::artist::", "::title::", new List<string>() { "POP" });
+        private readonly UpdateSongRequest _updateSongRequest = new UpdateSongRequest("::new-artist::", "::title::", new List<string>() { "POP" });
 
         [TestMethod]
         public void AddAndRetrieveSong()
         {
-            var savedSongId = musicPlaylist.Add(songRequest);
+            var savedSongId = musicPlaylist.Add(_registerSongRequest);
 
             var savedSong = musicPlaylist.GetById(savedSongId);
 
             Assert.AreEqual(savedSong.HasValue, true);
             Assert.AreEqual(savedSong.Value.Artist, "::artist::");
+            Assert.AreEqual(savedSong.Value.Title, "::title::");
             Assert.IsTrue(savedSong.Value.Genres.SequenceEqual(new List<string>() { "pop" }));
         }
 
@@ -42,42 +43,58 @@ namespace SongPlaylistTest.Core
         }
 
         [TestMethod]
+        public void DeleteSong()
+        {
+            var savedSongId = musicPlaylist.Add(_registerSongRequest);
+            var deletedSong = musicPlaylist.Delete(savedSongId);
+
+            var missingSong = musicPlaylist.GetById(savedSongId);
+
+            Assert.AreEqual(missingSong.HasValue, false);
+            Assert.AreEqual(deletedSong.Artist, "::artist::");
+            Assert.AreEqual(deletedSong.Title, "::title::");
+            Assert.IsTrue(deletedSong.Genres.SequenceEqual(new List<string>() { "pop" }));
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(SongNotFoundException))]
+        public void DeletingNonExistingSongThrowsException()
+        {
+            musicPlaylist.Delete("::id::");
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(SongAlreadyExistsException))]
         public void AddingSameSongThrowsException()
         {
-            var savedSongId = musicPlaylist.Add(songRequest);
-            musicPlaylist.Add(songRequest);
+            var savedSongId = musicPlaylist.Add(_registerSongRequest);
+            musicPlaylist.Add(_registerSongRequest);
         }
 
         [TestMethod]
         public void UpdateSong()
         {
-            var savedSongId = musicPlaylist.Add(songRequest);
+            var savedSongId = musicPlaylist.Add(_registerSongRequest);
+
+            var updatedSong = musicPlaylist.Update(savedSongId, _updateSongRequest);
+
             var possibleSong = musicPlaylist.GetById(savedSongId);
             var retrievedSong = possibleSong.Value;
 
-            retrievedSong.Artist = "::new-artist::";
-
-            var updatedSong = musicPlaylist.Update(retrievedSong);
-
-            Assert.AreEqual(retrievedSong, updatedSong);
+            Assert.AreEqual(retrievedSong.Artist, updatedSong.Artist);
         }
 
         [TestMethod]
-        public void UpdatingNonExistentSongUpserts()
+        [ExpectedException(typeof(SongNotFoundException))]
+        public void UpdatingNonExistentSongThrowsException()
         {
-            var song = new Song("::artist::", new List<string> { "POP" });
-
-            var upsertedSong = musicPlaylist.Update(song);
-
-            Assert.AreEqual(song.Artist, upsertedSong.Artist);
-            Assert.IsTrue(song.Genres.SequenceEqual(upsertedSong.Genres));
+             musicPlaylist.Update("::id::", _updateSongRequest);
         }
 
         [TestMethod]
         public void GetAllSongs()
         {
-            var savedSongId = musicPlaylist.Add(songRequest);
+            var savedSongId = musicPlaylist.Add(_registerSongRequest);
             var possibleSong = musicPlaylist.GetById(savedSongId);
 
             var allSongs = musicPlaylist.GetAll();
@@ -88,7 +105,7 @@ namespace SongPlaylistTest.Core
         [TestMethod]
         public void GetSongsByArtist()
         {
-            var savedSongId = musicPlaylist.Add(songRequest);
+            var savedSongId = musicPlaylist.Add(_registerSongRequest);
             var possibleSong = musicPlaylist.GetById(savedSongId);
 
             var songList = musicPlaylist.GetByArtist(possibleSong.Value.Artist);
@@ -100,10 +117,10 @@ namespace SongPlaylistTest.Core
         public void GetSongsByGenre()
         {
             var secondPopSongId =
-                musicPlaylist.Add(new SongRequest("::new-artist::", new List<string>() { "POP", "ROCK" }));
+                musicPlaylist.Add(new RegisterSongRequest("::new-artist::", "::title::", new List<string>() { "POP", "ROCK" }));
             var possibleSecondPopSong = musicPlaylist.GetById(secondPopSongId);
 
-            var savedSongId = musicPlaylist.Add(songRequest);
+            var savedSongId = musicPlaylist.Add(_registerSongRequest);
             var possibleSong = musicPlaylist.GetById(savedSongId);
 
             var songList = musicPlaylist.GetByGenre("pop");
@@ -128,19 +145,21 @@ namespace SongPlaylistTest.Core
         [TestMethod]
         public void AddingSongAddsItGenreToList()
         {
-            var savedSongId = musicPlaylist.Add(songRequest);
+            var savedSongId = musicPlaylist.Add(_registerSongRequest);
 
             var genres = musicPlaylist.ViewGenres();
 
-            Assert.IsTrue(genres.SequenceEqual(songRequest.Genres.ConvertAll(s => s.ToLower())));
+            Assert.IsTrue(genres.SequenceEqual(_registerSongRequest.Genres.ConvertAll(s => s.ToLower())));
         }
 
         [TestMethod]
         public void UpdatingSongAddsItGenreToList()
         {
-            var savedSongId = musicPlaylist.Add(songRequest);
+            var savedSongId = musicPlaylist.Add(_registerSongRequest);
 
-            musicPlaylist.Update(new Song(savedSongId, "::artist::", new List<string> { "Country", "pop" }));
+            var updateRequest = new UpdateSongRequest("::artist::", "::title::", new List<string>(){"Pop", "Country"});
+
+            musicPlaylist.Update(savedSongId, updateRequest);
 
             var genres = musicPlaylist.ViewGenres();
 

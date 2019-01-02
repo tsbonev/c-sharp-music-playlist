@@ -43,8 +43,9 @@
     <Compile Include="Core\IMusicPlaylist.cs" />
     <Compile Include="Core\InMemoryMusicPlaylist.cs" />
     <Compile Include="Core\Song.cs" />
-    <Compile Include="Core\SongAlreadyExistsException.cs" />
-    <Compile Include="Core\SongRequest.cs" />
+    <Compile Include="Core\Exceptions.cs" />
+    <Compile Include="Core\RegisterSongRequest.cs" />
+    <Compile Include="Core\UpdateSongRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

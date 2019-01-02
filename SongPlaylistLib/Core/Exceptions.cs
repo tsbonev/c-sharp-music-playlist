@@ -12,4 +12,11 @@ namespace SongPlaylistLib.Core
         {
         }
     }
+
+    public class SongNotFoundException : Exception
+    {
+        public SongNotFoundException()
+        {
+        }
+    }
 }

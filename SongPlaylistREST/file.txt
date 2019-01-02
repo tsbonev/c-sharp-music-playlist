@@ -1,0 +1,62 @@
+2019-01-02 21:35:23.3619|INFO|SongPlaylistREST.Controllers.SongsController|Deleting song with id ed135e2c-c552-4b07-b49a-b989a8c03515
+2019-01-02 21:35:23.4486|INFO|SongPlaylistREST.Controllers.SongsController|Song could not be found
+2019-01-02 21:35:24.3997|INFO|SongPlaylistREST.Controllers.SongsController|Deleting song with id ed135e2c-c552-4b07-b49a-b989a8c03515
+2019-01-02 21:35:24.4356|INFO|SongPlaylistREST.Controllers.SongsController|Song could not be found
+2019-01-02 21:36:09.3993|INFO|SongPlaylistREST.Controllers.SongsController|Deleting song with id ed135e2c-c552-4b07-b49a-b989a8c03515
+2019-01-02 21:36:09.4183|INFO|SongPlaylistREST.Controllers.SongsController|Song could not be found
+2019-01-02 21:36:10.8924|INFO|SongPlaylistREST.Controllers.SongsController|Deleting song with id ed135e2c-c552-4b07-b49a-b989a8c03515
+2019-01-02 21:36:10.8924|INFO|SongPlaylistREST.Controllers.SongsController|Song could not be found
+2019-01-02 21:37:53.0315|INFO|SongPlaylistREST.Controllers.SongsController|Deleting song with id ed135e2c-c552-4b07-b49a-b989a8c03515
+2019-01-02 21:37:53.0534|INFO|SongPlaylistREST.Controllers.SongsController|Song could not be found
+2019-01-02 21:37:53.9527|INFO|SongPlaylistREST.Controllers.SongsController|Deleting song with id ed135e2c-c552-4b07-b49a-b989a8c03515
+2019-01-02 21:37:53.9527|INFO|SongPlaylistREST.Controllers.SongsController|Song could not be found
+2019-01-02 21:41:44.4871|INFO|SongPlaylistREST.Controllers.SongsController|Deleting song with id ed135e2c-c552-4b07-b49a-b989a8c03515
+2019-01-02 21:41:44.5080|INFO|SongPlaylistREST.Controllers.SongsController|Song could not be found
+2019-01-02 21:42:00.7894|INFO|SongPlaylistREST.Controllers.SongsController|Deleting song with id ed135e2c-c552-4b07-b49a-b989a8c03515
+2019-01-02 21:42:00.7894|INFO|SongPlaylistREST.Controllers.SongsController|Song could not be found
+2019-01-02 21:42:03.4647|INFO|SongPlaylistREST.Controllers.SongsController|Retrieving song with id 4eb57427-ebe
+2019-01-02 21:42:03.4647|WARN|SongPlaylistREST.Controllers.SongsController|Song not found by id
+2019-01-02 21:42:04.1564|INFO|SongPlaylistREST.Controllers.SongsController|Retrieving song with id 4eb57427-ebe
+2019-01-02 21:42:04.1564|WARN|SongPlaylistREST.Controllers.SongsController|Song not found by id
+2019-01-02 21:42:04.8070|INFO|SongPlaylistREST.Controllers.SongsController|Retrieving song with id 4eb57427-ebe
+2019-01-02 21:42:04.8070|WARN|SongPlaylistREST.Controllers.SongsController|Song not found by id
+2019-01-02 21:42:05.1985|INFO|SongPlaylistREST.Controllers.SongsController|Retrieving song with id 4eb57427-ebe
+2019-01-02 21:42:05.1985|WARN|SongPlaylistREST.Controllers.SongsController|Song not found by id
+2019-01-02 21:42:06.0283|INFO|SongPlaylistREST.Controllers.SongsController|Retrieving song with id 4eb57427-ebe
+2019-01-02 21:42:06.0283|WARN|SongPlaylistREST.Controllers.SongsController|Song not found by id
+2019-01-02 21:42:06.4885|INFO|SongPlaylistREST.Controllers.SongsController|Retrieving song with id 4eb57427-ebe
+2019-01-02 21:42:06.4885|WARN|SongPlaylistREST.Controllers.SongsController|Song not found by id
+2019-01-02 21:42:06.9867|INFO|SongPlaylistREST.Controllers.SongsController|Retrieving song with id 4eb57427-ebe
+2019-01-02 21:42:06.9867|WARN|SongPlaylistREST.Controllers.SongsController|Song not found by id
+2019-01-02 21:42:41.2193|INFO|SongPlaylistREST.Controllers.SongsController|Retrieving song with id 4eb57427-ebe
+2019-01-02 21:42:41.2771|WARN|SongPlaylistREST.Controllers.SongsController|Song not found by id
+2019-01-02 21:42:42.0816|INFO|SongPlaylistREST.Controllers.SongsController|Retrieving song with id 4eb57427-ebe
+2019-01-02 21:42:42.1016|WARN|SongPlaylistREST.Controllers.SongsController|Song not found by id
+2019-01-02 21:43:52.9428|INFO|SongPlaylistREST.Controllers.SongsController|Retrieving song with id 4eb57427-ebe
+2019-01-02 21:43:52.9707|WARN|SongPlaylistREST.Controllers.SongsController|Song not found by id
+2019-01-02 21:43:53.7563|INFO|SongPlaylistREST.Controllers.SongsController|Retrieving song with id 4eb57427-ebe
+2019-01-02 21:43:53.7563|WARN|SongPlaylistREST.Controllers.SongsController|Song not found by id
+2019-01-02 21:43:54.3476|INFO|SongPlaylistREST.Controllers.SongsController|Retrieving song with id 4eb57427-ebe
+2019-01-02 21:43:54.3476|WARN|SongPlaylistREST.Controllers.SongsController|Song not found by id
+2019-01-02 21:43:54.7854|INFO|SongPlaylistREST.Controllers.SongsController|Retrieving song with id 4eb57427-ebe
+2019-01-02 21:43:54.7854|WARN|SongPlaylistREST.Controllers.SongsController|Song not found by id
+2019-01-02 21:44:54.4415|INFO|SongPlaylistREST.Controllers.SongsController|Retrieving song with id 4eb57427-ebe
+2019-01-02 21:44:54.4415|WARN|SongPlaylistREST.Controllers.SongsController|Song not found by id
+2019-01-02 21:44:55.9500|INFO|SongPlaylistREST.Controllers.SongsController|Retrieving song with id 4eb57427-ebe
+2019-01-02 21:44:55.9500|WARN|SongPlaylistREST.Controllers.SongsController|Song not found by id
+2019-01-02 21:44:56.6944|INFO|SongPlaylistREST.Controllers.SongsController|Retrieving song with id 4eb57427-ebe
+2019-01-02 21:44:56.6944|WARN|SongPlaylistREST.Controllers.SongsController|Song not found by id
+2019-01-02 21:44:57.3288|INFO|SongPlaylistREST.Controllers.SongsController|Retrieving song with id 4eb57427-ebe
+2019-01-02 21:44:57.3288|WARN|SongPlaylistREST.Controllers.SongsController|Song not found by id
+2019-01-02 21:44:59.5448|INFO|SongPlaylistREST.Controllers.SongsController|Retrieving all songs
+2019-01-02 21:45:00.3753|INFO|SongPlaylistREST.Controllers.SongsController|Retrieving all songs
+2019-01-02 21:45:01.3049|INFO|SongPlaylistREST.Controllers.SongsController|Retrieving all songs
+2019-01-02 21:45:01.7495|INFO|SongPlaylistREST.Controllers.SongsController|Retrieving all songs
+2019-01-02 21:45:02.0386|INFO|SongPlaylistREST.Controllers.SongsController|Retrieving all songs
+2019-01-02 21:45:02.3648|INFO|SongPlaylistREST.Controllers.SongsController|Retrieving all songs
+2019-01-02 21:45:14.0626|INFO|SongPlaylistREST.Controllers.SongsController|Retrieving all songs
+2019-01-02 21:45:14.8261|INFO|SongPlaylistREST.Controllers.SongsController|Retrieving all songs
+2019-01-02 21:45:17.0352|INFO|SongPlaylistREST.Controllers.SongsController|Retrieving song with id 4eb57427-ebe
+2019-01-02 21:45:17.0352|WARN|SongPlaylistREST.Controllers.SongsController|Song not found by id
+2019-01-02 21:45:17.5889|INFO|SongPlaylistREST.Controllers.SongsController|Retrieving song with id 4eb57427-ebe
+2019-01-02 21:45:17.5889|WARN|SongPlaylistREST.Controllers.SongsController|Song not found by id

@@ -6,15 +6,17 @@ using System.Threading.Tasks;
 
 namespace SongPlaylistLib.Core
 {
-    public struct SongRequest
+    public struct RegisterSongRequest
     {
-        public SongRequest(string artist, List<string> genres)
+        public RegisterSongRequest(string artist, string title, List<string> genres)
         {
             Artist = artist;
+            Title = title;
             Genres = genres.ConvertAll(s => s.ToLower());
         }
 
         public string Artist { get; }
+        public string Title { get; }
         public List<string> Genres { get; }
     }
 }

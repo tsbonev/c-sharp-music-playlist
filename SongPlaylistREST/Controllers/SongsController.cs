@@ -5,44 +5,96 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Newtonsoft.Json;
+using NLog;
 using SongPlaylistLib.Core;
+using SongPlaylistREST.Helpers;
 
 namespace SongPlaylistREST.Controllers
 {
     public class SongsController : ApiController
     {
 
-        private IMusicPlaylist playlist = new InMemoryMusicPlaylist();
+        private IMusicPlaylist playlist = InMemoryPlaylistProvider.GetPlaylist();
+        private Logger logger = NLog.LogManager.GetCurrentClassLogger();
 
-        // GET api/songs
-        public string Get()
+        [HttpGet]
+        [Route("api/songs")]
+        public HttpResponseMessage GetAllSongs()
         {
-            return JsonConvert.SerializeObject(playlist.GetAll());
+            logger.Info("Retrieving all songs");
+
+            return this.Request.CreateResponse(HttpStatusCode.OK, playlist.GetAll());
         }
 
-        // GET api/songs/{id}
-        public string Get(string id)
+        [HttpGet]
+        [Route("api/songs/{id}")]
+        public HttpResponseMessage GetSongById(string id)
         {
-            return JsonConvert.SerializeObject(playlist.GetById(id));
+            logger.Info("Retrieving song with id " + id);
+
+            var possibleSong = playlist.GetById(id);
+
+            if (possibleSong.HasValue)
+            {
+                logger.Info("Song found by id");
+                return this.Request.CreateResponse(HttpStatusCode.OK, playlist.GetById(id));
+            }
+            else
+            {
+                logger.Warn("Song not found by id");
+                return this.Request.CreateResponse(HttpStatusCode.NotFound);
+            }
         }
 
-        // POST api/values
-        public string Post([FromBody]string request)
+        [HttpPost]
+        [Route("api/songs")]
+        public HttpResponseMessage RegisterSong([FromBody]RegisterSongRequest request)
         {
-            var savedSong = playlist.Add(JsonConvert.DeserializeObject<SongRequest>(request));
-            return savedSong;
+            try
+            {
+                logger.Info("Registering song");
+                var savedSong = playlist.Add(request);
+                return this.Request.CreateResponse(HttpStatusCode.Created, savedSong);
+            }
+            catch (SongAlreadyExistsException e)
+            {
+                logger.Warn("Song already registered");
+                return this.Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
         }
 
-        // PUT api/values/5
-        public string Put(int id, [FromBody]string value)
+        [HttpPut]
+        [Route("api/songs/{id}")]
+        public HttpResponseMessage UpdateSong(string id, [FromBody]UpdateSongRequest request)
         {
-            return "value";
+            logger.Info("Updating song");
+            try
+            {
+                var updatedSong = playlist.Update(id, request);
+                return this.Request.CreateResponse(HttpStatusCode.OK, updatedSong);
+            }
+            catch (SongNotFoundException e)
+            {
+                logger.Warn("Could not find song to update");
+                return this.Request.CreateResponse(HttpStatusCode.NotFound);
+            }
         }
 
-        // DELETE api/values/5
-        public string Delete(int id)
+        [HttpDelete]
+        [Route("api/songs/{id}")]
+        public HttpResponseMessage DeleteSongById(string id)
         {
-            return "value";
+            try
+            {
+                logger.Info("Deleting song with id " + id);
+                var deletedSong = playlist.Delete(id);
+                return this.Request.CreateResponse(HttpStatusCode.NoContent, deletedSong);
+            }
+            catch (SongNotFoundException e)
+            {
+                logger.Info("Song could not be found");
+                return this.Request.CreateResponse(HttpStatusCode.NotFound);
+            }
         }
     }
 }
