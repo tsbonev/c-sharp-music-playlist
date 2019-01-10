@@ -50,7 +50,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Music Playlist REST API\IMusicPlaylistRESTAPI.cs" />
     <Compile Include="Music Playlist REST API\Models\RegisterSongRequest.cs" />
     <Compile Include="Music Playlist REST API\Models\Song.cs" />
