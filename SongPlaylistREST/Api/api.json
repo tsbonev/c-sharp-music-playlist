@@ -1,0 +1,273 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Music Playlist REST API",
+    "description": "Music Playlist API",
+    "version": "1.0.0"
+  },
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json",
+    "text/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/songs": {
+      "get": {
+        "summary": "Retrieves all songs",
+        "operationId": "getAllSongs",
+        "responses": {
+          "200": {
+            "description": "Songs retrieved",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Song"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Register song",
+        "operationId": "registerSong",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "registerSongRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RegisterSongRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Songs retrieved",
+            "schema": {
+              "$ref": "#/definitions/Song"
+            }
+          },
+          "400": {
+            "description": "Songs already registered"
+          }
+        }
+      }
+    },
+    "/api/songs/{id}": {
+      "get": {
+        "summary": "Get Song By Id",
+        "operationId": "getSongById",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Song retrieved successfully",
+            "schema": {
+              "$ref": "#/definitions/Song"
+            }
+          },
+          "404": {
+            "description": "Song was not found"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete song by id",
+        "operationId": "deleteSongById",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "description": "The id of the order"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successfully deleted song",
+            "schema": {
+              "$ref": "#/definitions/Song"
+            }
+          },
+          "404": {
+            "description": "Song not found"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update song by id",
+        "operationId": "updateSongById",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "description": "The id of the order"
+          },
+          {
+            "in": "body",
+            "name": "uptadeRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateSongRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Song updated succesfully"
+          },
+          "404": {
+            "description": "Song not found by id"
+          }
+        }
+      }
+    },
+    "/api/artists": {
+      "get": {
+        "summary": "Get artist's songs",
+        "operationId": "getSongsByArtist",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "artistName",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Songs retrieved",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Song"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/genres": {
+      "get": {
+        "summary": "Get all genres",
+        "operationId": "getAllGenres",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "artistName",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Songs retrieved",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/genres/{genre}": {
+      "get": {
+        "summary": "Get song by genre",
+        "operationId": "getSongsByGenre",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "genre",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Songs retrieved",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Song"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "RegisterSongRequest": {
+      "type": "object",
+      "properties": {
+        "artist": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "genres": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Song": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "artist": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "genres": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "UpdateSongRequest": {
+      "type": "object",
+      "properties": {
+        "artist": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "genres": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "host": "virtserver.swaggerhub.com",
+  "basePath": "/tsbonev/music_playlist/1.0.0"
+}

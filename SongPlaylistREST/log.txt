@@ -1,0 +1,7 @@
+2019-01-09 11:34:25.7830|INFO|SongPlaylistREST.Controllers.SongsController|Registering song
+2019-01-09 11:35:38.0330|INFO|SongPlaylistREST.Controllers.SongsController|Registering song
+2019-01-09 11:35:38.0439|WARN|SongPlaylistREST.Controllers.SongsController|Song already registered
+2019-01-09 11:35:48.8671|INFO|SongPlaylistREST.Controllers.SongsController|Registering song
+2019-01-09 11:35:51.9406|INFO|SongPlaylistREST.Controllers.SongsController|Retrieving all songs
+2019-01-09 11:36:34.4041|INFO|SongPlaylistREST.Controllers.SongsController|Retrieving all songs
+2019-01-09 11:37:32.8397|INFO|SongPlaylistREST.Controllers.SongsController|Retrieving all songs
